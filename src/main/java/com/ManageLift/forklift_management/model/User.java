@@ -1,4 +1,4 @@
-package com.ManageLift.forklift_management;
+package com.ManageLift.forklift_management.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
