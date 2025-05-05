@@ -1,12 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maintenance Form</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ManageLift Maintenance Checklist</title>
+  <link rel="stylesheet" href="../static/styles.css">
 </head>
 <body>
-<h1>Forklift Maintenance Form</h1>
-<!-- Add form content here -->
+  <div class="top-section">
+    <h1>ManageLift</h1>
+    <h2>Maintenance Checklist</h2>
+
+    <div class="info-grid">
+      <div class="form-group"><label>Customer Name</label><input type="text" /></div>
+      <div class="form-group"><label>Customer PO</label><input type="text" /></div>
+      <div class="form-group"><label>Address</label><input type="text" /></div>
+      <div class="form-group"><label>City</label><input type="text" /></div>
+
+      <div class="form-group"><label>State</label><input type="text" /></div>
+      <div class="form-group"><label>Unit ID#</label><input type="text" /></div>
+      <div class="form-group"><label>Date Started</label><input type="date" /></div>
+      <div class="form-group"><label>Make</label><input type="text" /></div>
+
+      <div class="form-group"><label>Date Completed</label><input type="date" /></div>
+      <div class="form-group"><label>Model</label><input type="text" /></div>
+      <div class="form-group"><label>Technician Name</label><input type="text" /></div>
+      <div class="form-group"><label>Serial Number</label><input type="text" /></div>
+
+      <div class="form-group"><label>Hour Meter</label><input type="text" /></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>1. Visual Inspection</h3>
+    <div class="inspection-header">
+      <span>P</span><span>F</span><span>N</span><span></span>
+    </div>
+
+    <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Fluid Leaks</label></div>
+    <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Carriage Rollers / Slide Blocks</label></div>
+    <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Mast – Chains / Retainers / Sheaves / Anchors</label></div>
+    <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Forks and Fork Lock Pins</label></div>
+    <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Hydraulic Cylinders</label></div>
+    <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Brake Master Cylinder</label></div>
+    <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Over Mast Hoses and Cables</label></div>
+    <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Caster Assembly</label></div>
+    <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Drive Unit / Radial Rings</label></div>
+    <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Hydraulic Manifold / Piping</label></div>
+    <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Tractor Frame / Base Legs / Doors & Covers</label></div>
+  </div>
 </body>
 </html>

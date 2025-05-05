@@ -1,0 +1,75 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+.top-section {
+  max-width: 960px;
+  margin: auto;
+}
+
+h1, h2, h3 {
+  margin: 5px 0;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px 20px;
+  margin-top: 30px;
+  text-align: left;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+input[type="text"],
+input[type="date"] {
+  padding: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.section {
+  max-width: 960px;
+  margin: 40px auto 0;
+  text-align: left;
+}
+
+.inspection-table {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.inspection-header {
+  display: grid;
+  grid-template-columns: 30px 30px 30px auto;
+  gap: 6px;
+  font-weight: bold;
+  padding-left: 2px;
+}
+
+.inspection-row {
+  display: grid;
+  grid-template-columns: 30px 30px 30px auto;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.inspection-row label {
+  font-weight: normal;
+}
+
