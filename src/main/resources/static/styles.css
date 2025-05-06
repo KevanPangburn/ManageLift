@@ -6,13 +6,37 @@ body {
   text-align: center;
 }
 
-.top-section {
+h1, h2, h3 {
+  margin: 5px 0;
+}
+
+.header-container {
   max-width: 960px;
   margin: auto;
 }
 
-h1, h2, h3 {
-  margin: 5px 0;
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 10px;
+}
+
+.title-block {
+  flex: 1;
+  text-align: center;
+}
+
+.customer-name input {
+  padding: 5px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-container {
+  max-width: 960px;
+  margin: auto;
 }
 
 .info-grid {
@@ -72,4 +96,3 @@ input[type="date"] {
 .inspection-row label {
   font-weight: normal;
 }
-
