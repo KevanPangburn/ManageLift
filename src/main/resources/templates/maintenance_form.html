@@ -8,10 +8,8 @@
 </head>
 <body>
   <div class="header-container">
-    <div class="title-block">
-      <h1>ManageLift</h1>
-      <h2>Maintenance Checklist</h2>
-    </div>
+    <h1>ManageLift</h1>
+    <h2>Maintenance Checklist</h2>
   </div>
 
   <div class="form-container">
@@ -20,10 +18,12 @@
       <div class="form-group"><label>Address</label><input type="text" /></div>
       <div class="form-group"><label>City</label><input type="text" /></div>
       <div class="form-group"><label>State</label><input type="text" /></div>
+
       <div class="form-group"><label>Customer PO</label><input type="text" /></div>
       <div class="form-group"><label>Date Started</label><input type="date" /></div>
       <div class="form-group"><label>Date Completed</label><input type="date" /></div>
       <div class="form-group"><label>Unit ID#</label><input type="text" /></div>
+
       <div class="form-group"><label>Make</label><input type="text" /></div>
       <div class="form-group"><label>Model</label><input type="text" /></div>
       <div class="form-group"><label>Serial Number</label><input type="text" /></div>
@@ -31,23 +31,73 @@
     </div>
   </div>
 
-  <div class="section">
-    <h3>1. Visual Inspection</h3>
-    <div class="inspection-header">
-      <span>P</span><span>F</span><span>N</span><span></span>
+  <div class="side-by-side-section">
+    <!-- 1. Visual Inspection -->
+    <div class="section">
+      <h3>1. Visual Inspection</h3>
+      <div class="inspection-header">
+        <span>P</span><span>F</span><span>N</span><span></span>
+      </div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Fluid Leaks</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Carriage Rollers / Slide Blocks</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Mast – Chains / Retainers / Sheaves / Anchors</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Forks and Fork Lock Pins</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Hydraulic Cylinders</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Brake Master Cylinder</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Over Mast Hoses and Cables</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Caster Assembly</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Drive Unit / Radial Rings</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Hydraulic Manifold / Piping</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Tractor Frame / Base Legs / Doors & Covers</label></div>
     </div>
-
-    <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Fluid Leaks</label></div>
-    <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Carriage Rollers / Slide Blocks</label></div>
-    <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Mast – Chains / Retainers / Sheaves / Anchors</label></div>
-    <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Forks and Fork Lock Pins</label></div>
-    <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Hydraulic Cylinders</label></div>
-    <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Brake Master Cylinder</label></div>
-    <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Over Mast Hoses and Cables</label></div>
-    <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Caster Assembly</label></div>
-    <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Drive Unit / Radial Rings</label></div>
-    <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Hydraulic Manifold / Piping</label></div>
-    <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Tractor Frame / Base Legs / Doors & Covers</label></div>
+  
+    <!-- 2. Electrical System -->
+    <div class="section">
+      <h3>2. Electrical System</h3>
+      <div class="inspection-header">
+        <span>P</span><span>F</span><span>N</span><span></span>
+      </div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Control Wiring</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Switches</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Power Cables</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Fuses</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Connectors</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>System Short to Frame</label></div>
+    </div>
+  
+    <!-- 3. Motors -->
+    <div class="section">
+      <h3>3. Motors</h3>
+      <div style="margin-bottom: 10px;">
+        <label><input type="checkbox" /> AC</label>
+        <label style="margin-left: 20px;"><input type="checkbox" /> DC</label>
+      </div>
+      <div class="inspection-header">
+        <span>P</span><span>F</span><span>N</span><span></span>
+      </div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Drive</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Comm</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Amps</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Brushes</label></div>
+    </div>
+  
+    <!-- 4. Battery -->
+    <div class="section">
+      <h3>4. Battery</h3>
+      <div class="inspection-header">
+        <span>P</span><span>F</span><span>N</span><span></span>
+      </div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Volts Loaded</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Volts No Load</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Pos.</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Neg.</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>S.G.</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Electrolyte level</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Frame Leakage</label></div>
+    </div>
+  </div>
+  
+    </div>
   </div>
 </body>
 </html>
