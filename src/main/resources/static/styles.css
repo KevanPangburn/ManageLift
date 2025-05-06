@@ -15,23 +15,8 @@ h1, h2, h3 {
   margin: auto;
 }
 
-.top-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding-bottom: 10px;
-}
-
 .title-block {
-  flex: 1;
   text-align: center;
-}
-
-.customer-name input {
-  padding: 5px;
-  font-size: 14px;
-  width: 100%;
-  box-sizing: border-box;
 }
 
 .form-container {
@@ -69,12 +54,6 @@ input[type="date"] {
   max-width: 960px;
   margin: 40px auto 0;
   text-align: left;
-}
-
-.inspection-table {
-  display: flex;
-  flex-direction: column;
-  margin-top: 10px;
 }
 
 .inspection-header {
