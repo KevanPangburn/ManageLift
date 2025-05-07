@@ -87,3 +87,11 @@ input[type="date"] {
   max-width: 960px;
   margin: 40px auto 0;
 }
+
+.safety-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+
