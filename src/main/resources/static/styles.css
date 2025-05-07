@@ -94,4 +94,10 @@ input[type="date"] {
   gap: 30px;
 }
 
+.motor-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
 

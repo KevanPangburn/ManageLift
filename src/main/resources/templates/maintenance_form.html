@@ -50,10 +50,27 @@
       <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Hydraulic Manifold / Piping</label></div>
       <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Tractor Frame / Base Legs / Doors & Covers</label></div>
     </div>
-  
-    <!-- 2. Electrical System -->
+
+    <!-- 2. Hydraulic System -->
     <div class="section">
-      <h3>2. Electrical System</h3>
+      <h3>2. Hydraulic System</h3>
+      <div class="inspection-header">
+        <span>P</span><span>F</span><span>N</span><span></span>
+      </div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Lift Cyl.</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Reach Cyl.</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Tilt Cyl.</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Sideshift Cyl.</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Connections</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Relief Pressures</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Lift</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Aux</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Steer</label></div>
+    </div>
+  
+    <!-- 3. Electrical System -->
+    <div class="section">
+      <h3>3. Electrical System</h3>
       <div class="inspection-header">
         <span>P</span><span>F</span><span>N</span><span></span>
       </div>
@@ -66,52 +83,61 @@
       <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>System Short to Frame</label></div>
     </div>
   
-    <!-- 3. Motors -->
-    <div class="section">
-      <h3>3. Motors</h3>
-      <div style="margin-bottom: 10px;">
-        <label><input type="checkbox" /> AC</label>
-        <label style="margin-left: 20px;"><input type="checkbox" /> DC</label>
-      </div>
-      <div class="inspection-header">
-        <span>P</span><span>F</span><span>N</span><span></span>
-      </div>
-      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Drive</label></div>
+<!-- 4. Motors -->
+<div class="section full-width-motors">
+  <h3>4. Motors</h3>
+  <div class="motor-header">
+    <label><input type="checkbox" /> AC</label>
+    <label style="margin-left: 20px;"><input type="checkbox" /> DC</label>
+  </div>
+  <div class="motor-grid">
+    <div>
+      <strong>Drive</strong>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Brushes</label></div>
       <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Comm</label></div>
       <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Amps</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Ohms</label></div>
+    </div>
+    <div>
+      <strong>Lift</strong>
       <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Brushes</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Comm</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Amps</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Ohms</label></div>
     </div>
-  
-    <!-- 4. Battery -->
-    <div class="section">
-      <h3>4. Battery</h3>
-      <div class="inspection-header">
-        <span>P</span><span>F</span><span>N</span><span></span>
-      </div>
-      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Volts Loaded</label></div>
-      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Volts No Load</label></div>
-      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Pos. Leakage</label></div>
-      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Neg. Leakage</label></div>
-      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>S.G.</label></div>
-      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Electrolyte level</label></div>
+    <div>
+      <strong>Aux</strong>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Brushes</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Comm</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Amps</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Ohms</label></div>
     </div>
-
-    <!-- 5. Hydraulic System -->
-<div class="section">
-  <h3>5. Hydraulic System</h3>
-  <div class="inspection-header">
-    <span>P</span><span>F</span><span>N</span><span></span>
+    <div>
+      <strong>Steer</strong>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Brushes</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Comm</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Amps</label></div>
+      <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Ohms</label></div>
+    </div>
   </div>
-  <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Lift Cyl.</label></div>
-  <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Reach Cyl.</label></div>
-  <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Tilt Cyl.</label></div>
-  <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Sideshift Cyl.</label></div>
-  <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Connections</label></div>
-  <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Relief Pressures</label></div>
-  <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Lift</label></div>
-  <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Aux</label></div>
-  <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Steer</label></div>
 </div>
+
+  
+        <!-- 5. Battery -->
+        <div class="section">
+          <h3>5. Battery</h3>
+          <div class="inspection-header">
+            <span>P</span><span>F</span><span>N</span><span></span>
+          </div>
+          <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Volts Loaded</label></div>
+          <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Volts No Load</label></div>
+          <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Pos. Leakage</label></div>
+          <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Neg. Leakage</label></div>
+          <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>S.G.</label></div>
+          <div class="inspection-row"><input type="checkbox"><input type="checkbox"><input type="checkbox"><label>Electrolyte level</label></div>
+        </div>
+
+
 
   <!-- 6. Operational Inspection -->
 <div class="section">
@@ -185,6 +211,10 @@
     </div>
   </div>
 </div>
+
+
+
+
 
 
   </div>
