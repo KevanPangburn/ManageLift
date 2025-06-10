@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
+import java.util.Map;
+import com.ManageLift.forklift_management.config.MapToJsonConverter;
+
 
 @Getter
 @Setter
@@ -23,6 +26,10 @@ public class MaintenanceLog {
 
     @Column(name = "customer_po")
     private String customerPO;
+
+    @Column(name = "inspection_data")
+    @Convert(converter = MapToJsonConverter.class)
+    private Map<String, String> inspectionData;
 
     private String address;
     private String city;
@@ -51,7 +58,4 @@ public class MaintenanceLog {
 
     @Column(nullable = false)
     private String description;
-
-
-    // Getters & Setters (generate them via IntelliJ or use Lombok if preferred)
 }
