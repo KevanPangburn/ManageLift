@@ -25,6 +25,7 @@ h1, h2, h3 {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 10px 20px;
   margin-top: 30px;
+  margin-bottom: 10px;
   text-align: left;
 }
 
@@ -84,21 +85,14 @@ input[type="date"] {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 40px;
-  max-width: 960px;
-  margin: 40px auto 0;
-}
-
-.safety-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
+  gap: 20px;
+  max-width: 960px; 
 }
 
 .motor-battery-section {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  margin: 0px;
 }
 
 .motor-section {
@@ -133,10 +127,7 @@ input[type="date"] {
   margin-left: 10px;
 }
 
-.battery-section {
-  margin: 0;
-  width: auto;
-}
+
 
 #technician_comments {
   width: 100%;
