@@ -20,6 +20,15 @@ h1, h2, h3 {
   margin: auto;
 }
 
+.pfn-legend {
+  font-size: 0.9rem;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.pfn-legend span {
+  margin-right: 15px;
+}
+
 .info-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
