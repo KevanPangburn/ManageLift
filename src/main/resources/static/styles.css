@@ -83,11 +83,13 @@ input[type="date"] {
 
 .side-by-side-section {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 20px;
-  max-width: 960px; 
+  gap: 40px;
+  max-width: 960px;
+  margin: 0 auto;
 }
+
 
 .motor-battery-section {
   display: flex;
@@ -127,8 +129,6 @@ input[type="date"] {
   margin-left: 10px;
 }
 
-
-
 #technician_comments {
   width: 100%;
   max-width: 960px;
@@ -157,14 +157,42 @@ input[type="date"] {
   .section {
     page-break-inside: avoid;
   }
+
+}
+.section.lubrication-section {
+  margin: 0 auto;
+  text-align: left;
+  max-width: 100%;
 }
 
 .lubrication-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* ✅ responsive columns */
   gap: 30px;
+  width: 100%;
   max-width: 960px;
   margin: 0 auto;
+}
+
+.hidden-heading {
+  visibility: hidden;
+}
+
+.motor-heading-wrapper {
+  margin-bottom: 0.5rem;
+}
+
+.form-group.comments {
+  margin-top: 2rem;
+}
+
+.form-group.signature {
+  margin-top: 1.5rem;
+}
+
+.submit-container {
+  margin-top: 2rem;
+  text-align: center;
 }
 
 
