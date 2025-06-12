@@ -67,6 +67,8 @@ input[type="date"] {
 .section {
   max-width: 460px;
   text-align: left;
+  border: 1px solid #ddd;
+  background-color: #fafafa;
 }
 
 .inspection-header {
