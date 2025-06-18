@@ -4,10 +4,30 @@ const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: Replace this with actual login request
-    console.log('Logging in:', { username, password });
+
+    try {
+      const response = await fetch('/api/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name: username, password })
+      });
+
+      const message = await response.text();
+
+      if (response.ok) {
+        alert('✅ ' + message);
+        // TODO: Redirect to dashboard later
+      } else {
+        alert('❌ ' + message);
+      }
+    } catch (err) {
+      console.error('Login failed:', err);
+      alert('Login request failed');
+    }
   };
 
   return (
@@ -48,3 +68,23 @@ const styles = {
     textAlign: 'center'
   },
   form: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  input: {
+    marginBottom: '1rem',
+    padding: '0.75rem',
+    fontSize: '1rem'
+  },
+  button: {
+    padding: '0.75rem',
+    fontSize: '1rem',
+    backgroundColor: '#007bff',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer'
+  }
+};
+
+export default LoginPage;

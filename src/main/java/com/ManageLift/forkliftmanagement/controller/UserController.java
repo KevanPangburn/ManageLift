@@ -7,8 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 
-
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
@@ -29,7 +29,6 @@ public class UserController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
-
 
     // Create a new user
     @PostMapping
@@ -55,6 +54,16 @@ public class UserController {
             userRepository.delete(user);
             return ResponseEntity.noContent().<Void>build();
         }).orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody User loginRequest) {
+        User user = userRepository.findByNameAndPassword(loginRequest.getName(), loginRequest.getPassword());
+        if (user != null) {
+            return ResponseEntity.ok("Login successful");
+        } else {
+            return ResponseEntity.status(401).body("Invalid credentials");
+        }
     }
 
 }
