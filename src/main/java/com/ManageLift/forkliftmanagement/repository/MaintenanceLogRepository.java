@@ -1,6 +1,6 @@
-package com.ManageLift.forklift_management.repository;
+package com.managelift.forkliftmanagement.repository;
 
-import com.ManageLift.forklift_management.model.MaintenanceLog;
+import com.managelift.forkliftmanagement.model.MaintenanceLog;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MaintenanceLogRepository extends JpaRepository<MaintenanceLog, Long> {

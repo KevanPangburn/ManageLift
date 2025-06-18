@@ -1,7 +1,8 @@
-package com.ManageLift.forklift_management.controller;
+package com.managelift.forkliftmanagement.controller;
 
-import com.ManageLift.forklift_management.model.MaintenanceLog;
-import com.ManageLift.forklift_management.repository.MaintenanceLogRepository;
+import com.managelift.forkliftmanagement.model.MaintenanceLog;
+import com.managelift.forkliftmanagement.repository.MaintenanceLogRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,11 +1,12 @@
-package com.ManageLift.forklift_management.model;
+package com.managelift.forkliftmanagement.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.Map;
-import com.ManageLift.forklift_management.config.MapToJsonConverter;
+import com.managelift.forkliftmanagement.config.MapToJsonConverter;
+import com.managelift.forkliftmanagement.model.Forklift;
 
 
 @Getter
@@ -58,4 +59,9 @@ public class MaintenanceLog {
 
     @Column(nullable = false)
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "forklift_id", insertable = false, updatable = false)
+    private Forklift forklift;
+
 }

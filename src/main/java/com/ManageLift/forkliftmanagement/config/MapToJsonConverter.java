@@ -1,4 +1,4 @@
-package com.ManageLift.forklift_management.config;
+package com.managelift.forkliftmanagement.config;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

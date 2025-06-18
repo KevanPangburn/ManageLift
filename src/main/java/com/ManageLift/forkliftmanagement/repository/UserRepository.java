@@ -1,6 +1,6 @@
-package com.ManageLift.forklift_management.repository;
+package com.managelift.forkliftmanagement.repository;
 
-import com.ManageLift.forklift_management.model.User;
+import com.managelift.forkliftmanagement.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

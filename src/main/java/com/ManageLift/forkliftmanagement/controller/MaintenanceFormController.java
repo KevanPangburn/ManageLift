@@ -1,4 +1,4 @@
-package com.ManageLift.forklift_management.controller;
+package com.managelift.forkliftmanagement.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

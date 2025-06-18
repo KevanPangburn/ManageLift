@@ -1,7 +1,7 @@
-package com.ManageLift.forklift_management.controller;
+package com.managelift.forkliftmanagement.controller;
 
-import com.ManageLift.forklift_management.model.User;
-import com.ManageLift.forklift_management.repository.UserRepository;
+import com.managelift.forkliftmanagement.model.User;
+import com.managelift.forkliftmanagement.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

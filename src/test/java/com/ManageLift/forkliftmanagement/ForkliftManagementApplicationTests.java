@@ -1,4 +1,4 @@
-package com.ManageLift.forklift_management;
+package com.managelift.forkliftmanagement;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
