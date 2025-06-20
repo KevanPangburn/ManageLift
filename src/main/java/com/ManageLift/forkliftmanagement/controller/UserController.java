@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
@@ -58,12 +57,11 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody User loginRequest) {
-        User user = userRepository.findByNameAndPassword(loginRequest.getName(), loginRequest.getPassword());
+        User user = userRepository.findByEmailAndPassword(loginRequest.getEmail(), loginRequest.getPassword());
         if (user != null) {
             return ResponseEntity.ok("Login successful");
         } else {
             return ResponseEntity.status(401).body("Invalid credentials");
         }
     }
-
 }
