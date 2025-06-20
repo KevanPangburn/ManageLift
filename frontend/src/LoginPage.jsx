@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
-  const [username, setUsername] = useState('');
+  console.log('LoginPage loaded');
+
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -11,16 +15,16 @@ const LoginPage = () => {
       const response = await fetch('/api/users/login', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name: username, password })
+        body: JSON.stringify({ email, password }),
       });
 
       const message = await response.text();
 
       if (response.ok) {
         alert('✅ ' + message);
-        // TODO: Redirect to dashboard later
+        navigate('/dashboard'); // Redirect on success
       } else {
         alert('❌ ' + message);
       }
@@ -35,10 +39,10 @@ const LoginPage = () => {
       <h2>ManageLift Login</h2>
       <form onSubmit={handleSubmit} style={styles.form}>
         <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           style={styles.input}
           required
         />
@@ -50,7 +54,9 @@ const LoginPage = () => {
           style={styles.input}
           required
         />
-        <button type="submit" style={styles.button}>Login</button>
+        <button type="submit" style={styles.button}>
+          Login
+        </button>
       </form>
     </div>
   );
@@ -65,26 +71,27 @@ const styles = {
     borderRadius: '8px',
     backgroundColor: '#fff',
     boxShadow: '0 0 10px rgba(0,0,0,0.1)',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   form: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   input: {
-    marginBottom: '1rem',
-    padding: '0.75rem',
-    fontSize: '1rem'
+    width: '100%',
+    padding: '10px',
+    marginBottom: '10px',
+    borderRadius: '4px',
+    border: '1px solid #ccc',
   },
   button: {
-    padding: '0.75rem',
-    fontSize: '1rem',
+    width: '100%',
+    padding: '10px',
     backgroundColor: '#007bff',
     color: '#fff',
     border: 'none',
     borderRadius: '4px',
-    cursor: 'pointer'
-  }
+  },
 };
 
 export default LoginPage;
