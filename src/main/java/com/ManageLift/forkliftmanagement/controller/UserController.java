@@ -7,7 +7,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/users")
@@ -16,7 +18,6 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    // Retrieve all users
     @GetMapping
     public List<User> getAllUsers() {
         return userRepository.findAll();
@@ -29,7 +30,6 @@ public class UserController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // Create a new user
     @PostMapping
     public User createUser(@Valid @RequestBody User user) {
         return userRepository.save(user);
@@ -56,12 +56,18 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody User loginRequest) {
-        User user = userRepository.findByEmailAndPassword(loginRequest.getEmail(), loginRequest.getPassword());
-        if (user != null) {
-            return ResponseEntity.ok("Login successful");
+    public ResponseEntity<Map<String, String>> login(@RequestBody User loginRequest) {
+        List<User> users = userRepository.findByEmailAndPassword(loginRequest.getEmail(), loginRequest.getPassword());
+        if (users.size() == 1) {
+            User user = users.get(0);
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Login successful");
+            response.put("role", user.getRole());
+            return ResponseEntity.ok(response);
+        } else if (users.size() > 1) {
+            return ResponseEntity.status(500).body(Map.of("message", "Multiple users found"));
         } else {
-            return ResponseEntity.status(401).body("Invalid credentials");
+            return ResponseEntity.status(401).body(Map.of("message", "Invalid credentials"));
         }
     }
 }

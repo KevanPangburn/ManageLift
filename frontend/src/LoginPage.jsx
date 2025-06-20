@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
-  console.log('LoginPage loaded');
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -20,13 +18,25 @@ const LoginPage = () => {
         body: JSON.stringify({ email, password }),
       });
 
-      const message = await response.text();
+      const result = await response.json();
 
       if (response.ok) {
-        alert('✅ ' + message);
-        navigate('/dashboard'); // Redirect on success
+        alert('✅ ' + result.message);
+        switch (result.role) {
+          case 'Technician':
+            navigate('/dashboard');
+            break;
+          case 'Operator':
+            navigate('/operator');
+            break;
+          case 'Customer':
+            navigate('/customer');
+            break;
+          default:
+            alert('Unknown role: ' + result.role);
+        }
       } else {
-        alert('❌ ' + message);
+        alert('❌ ' + result.message);
       }
     } catch (err) {
       console.error('Login failed:', err);
