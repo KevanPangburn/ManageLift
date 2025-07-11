@@ -1,4 +1,4 @@
-package com.ManageLift.forklift_management.exception;
+package com.managelift.forkliftmanagement.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.ManageLift.forklift_management;
+package com.managelift.forkliftmanagement;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

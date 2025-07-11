@@ -1,5 +1,5 @@
-package com.ManageLift.forklift_management;
-
+package com.managelift.forkliftmanagement;
+// renamed package to fix case issue
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
