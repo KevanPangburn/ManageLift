@@ -1,19 +1,36 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const OperatorDashboard = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    navigate('/');
+  };
+
   return (
     <div style={styles.container}>
-      <h1>Operator Dashboard</h1>
-      <p>Welcome Operator! Here you can perform safety checks.</p>
+      <h2>Operator Dashboard</h2>
+      <p>Welcome! Complete safety checks or report lift issues.</p>
+      <button style={styles.button} onClick={handleLogout}>Logout</button>
     </div>
   );
 };
 
 const styles = {
   container: {
-    padding: '2rem',
     textAlign: 'center',
-    fontFamily: 'Arial, sans-serif',
+    marginTop: '100px',
+  },
+  button: {
+    marginTop: '20px',
+    padding: '10px 20px',
+    fontSize: '16px',
+    backgroundColor: '#007bff',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
   },
 };
 
