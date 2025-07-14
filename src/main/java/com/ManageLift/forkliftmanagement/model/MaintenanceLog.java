@@ -1,13 +1,13 @@
 package com.managelift.forkliftmanagement.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.managelift.forkliftmanagement.config.MapToJsonConverter;
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
-import java.util.Map;
-import com.managelift.forkliftmanagement.config.MapToJsonConverter;
-import com.managelift.forkliftmanagement.model.Forklift;
 
+import java.time.LocalDateTime;
+import java.util.Map;
 
 @Getter
 @Setter
@@ -19,8 +19,10 @@ public class MaintenanceLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "forklift_id")
-    private Integer forkliftId;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "forklift_id", nullable = false)
+    @JsonBackReference
+    private Forklift forklift;
 
     @Column(name = "customer_name")
     private String customerName;
@@ -59,9 +61,4 @@ public class MaintenanceLog {
 
     @Column(nullable = false)
     private String description;
-
-    @ManyToOne
-    @JoinColumn(name = "forklift_id", insertable = false, updatable = false)
-    private Forklift forklift;
-
 }
