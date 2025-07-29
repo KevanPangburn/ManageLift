@@ -1,9 +1,9 @@
 package com.managelift.forkliftmanagement.model;
 
-
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import java.util.List;
 
+import java.util.List;
 
 @Entity
 @Table(name = "forklifts")
@@ -26,11 +26,15 @@ public class Forklift {
     @Column(name = "hour_meter")
     private String hourMeter;
 
+    @ManyToOne
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
+
     @OneToMany(mappedBy = "forklift", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<MaintenanceLog> maintenanceLogs;
 
-    public Forklift() {
-    }
+    public Forklift() {}
 
     public Forklift(String unitId, String make, String model, String serialNumber, String hourMeter) {
         this.unitId = unitId;
@@ -86,6 +90,14 @@ public class Forklift {
 
     public void setHourMeter(String hourMeter) {
         this.hourMeter = hourMeter;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public List<MaintenanceLog> getMaintenanceLogs() {

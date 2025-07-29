@@ -4,6 +4,7 @@ import LoginPage from './LoginPage';
 import TechnicianDashboard from './TechnicianDashboard';
 import OperatorDashboard from './OperatorDashboard';
 import CustomerDashboard from './CustomerDashboard';
+import MaintenanceForm from './MaintenanceForm';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/dashboard" element={<TechnicianDashboard />} />
         <Route path="/operator" element={<OperatorDashboard />} />
         <Route path="/customer" element={<CustomerDashboard />} />
+        <Route path="/maintenance-form/:unitId" element={<MaintenanceForm />} /> {/* Updated */}
       </Routes>
     </Router>
   );

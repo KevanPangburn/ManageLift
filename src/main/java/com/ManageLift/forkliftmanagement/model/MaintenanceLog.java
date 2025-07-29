@@ -61,4 +61,10 @@ public class MaintenanceLog {
 
     @Column(nullable = false)
     private String description;
+
+    @Column(name = "technician_comments")
+    private String technicianComments;
+
+    @Column(name = "technician_signature")
+    private String technicianSignature;
 }
