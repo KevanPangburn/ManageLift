@@ -14,6 +14,7 @@ useEffect(() => {
     .then(res => res.json())
     .then(data => {
       setForkliftData({
+        id: data.id || '',
         customerName: data.customerName || '',
         address: data.customerAddress || '',
         city: data.customerCity || '',
@@ -33,10 +34,37 @@ useEffect(() => {
     
 const handleSubmit = async (e) => {
   e.preventDefault();
-
   const form = e.target;
-  const formData = {};
-  const inspectionData = {};
+
+  const inspectionData = {}; // <-- moved here
+
+  // Collect selected radio buttons
+  const radios = form.querySelectorAll('input[type="radio"]:checked');
+  radios.forEach((input) => {
+    inspectionData[input.name] = input.value;
+  });
+
+  const formData = {
+    customerName: form.customer_name.value,
+    customerPO: form.customer_po.value,
+    address: form.address.value,
+    city: form.city.value,
+    state: form.state.value,
+    unitId: form.unit_number.value,
+    make: form.make.value,
+    model: form.model.value,
+    serialNumber: form.serial_number.value,
+    hourMeter: form.hour_meter.value,
+    dateStarted: form.date_started.value,
+    dateCompleted: form.date_completed.value,
+    description: 'Maintenance form submitted via frontend.',
+    technicianComments: form.technician_comments.value,
+    technicianSignature: form.technician_signature.value,
+    inspectionData: inspectionData, // <-- corrected name
+    forkliftId: forkliftData.id,
+    technicianId: 1 // temporary until you implement auth
+  };
+
 
   // Collect text, date, and textarea inputs
   const inputs = form.querySelectorAll('input[type="text"]:not([readonly]), input[type="date"]:not([readonly]), textarea');
@@ -45,15 +73,10 @@ const handleSubmit = async (e) => {
     formData[input.name] = input.value;
   });
 
-  // Collect selected radio buttons
-  const radios = form.querySelectorAll('input[type="radio"]:checked');
-  radios.forEach((input) => {
-    inspectionData[input.name] = input.value;
-  });
-
   formData.inspection_data = inspectionData;
 
   try {
+
     const response = await fetch('/api/maintenance/form', {
 
       method: 'POST',

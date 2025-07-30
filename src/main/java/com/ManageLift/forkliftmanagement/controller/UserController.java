@@ -1,5 +1,6 @@
 package com.managelift.forkliftmanagement.controller;
 
+import com.managelift.forkliftmanagement.model.Customer;
 import com.managelift.forkliftmanagement.model.User;
 import com.managelift.forkliftmanagement.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,18 +57,27 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Map<String, String>> login(@RequestBody User loginRequest) {
+    public ResponseEntity<Map<String, Object>> login(@RequestBody User loginRequest) {
         List<User> users = userRepository.findByEmailAndPassword(loginRequest.getEmail(), loginRequest.getPassword());
         if (users.size() == 1) {
             User user = users.get(0);
-            Map<String, String> response = new HashMap<>();
+            Map<String, Object> response = new HashMap<>();
             response.put("message", "Login successful");
             response.put("role", user.getRole());
+            response.put("id", user.getId());
             return ResponseEntity.ok(response);
         } else if (users.size() > 1) {
             return ResponseEntity.status(500).body(Map.of("message", "Multiple users found"));
         } else {
             return ResponseEntity.status(401).body(Map.of("message", "Invalid credentials"));
         }
+    }
+
+    @GetMapping("/{id}/customers")
+    public ResponseEntity<List<Customer>> getCustomersForUser(@PathVariable Long id) {
+        return userRepository.findById(id).map(user -> {
+            List<Customer> customers = user.getAssignedCustomers();
+            return ResponseEntity.ok(customers);
+        }).orElse(ResponseEntity.notFound().build());
     }
 }
