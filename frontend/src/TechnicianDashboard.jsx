@@ -1,20 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const TechnicianDashboard = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const customerId = location.state?.customerId;
+
   const [lifts, setLifts] = useState([]);
 
   useEffect(() => {
-    fetch('/api/forklifts')
+    if (!customerId) return;
+
+    fetch(`/api/forklifts`)
       .then(res => res.json())
       .then(data => {
-        setLifts(data);
+        const filtered = data.filter(lift => lift.customer?.id === customerId);
+        setLifts(filtered);
       })
       .catch(err => {
         console.error('Failed to fetch lifts:', err);
       });
-  }, []);
+  }, [customerId]);
 
   const handleLiftClick = (lift) => {
     navigate(`/maintenance-form/${lift.unitId}`);

@@ -19,12 +19,16 @@ const LoginPage = () => {
       });
 
       const result = await response.json();
+      console.log('Login result:', result);
 
-      if (response.ok) {
+      const userId = result.id;
+      console.log('Extracted userId:', userId);
+
+      if (response.ok && userId) {
         alert('✅ ' + result.message);
         switch (result.role) {
           case 'Technician':
-            navigate('/dashboard');
+            navigate('/select-customer', { state: { userId } });
             break;
           case 'Operator':
             navigate('/operator');
