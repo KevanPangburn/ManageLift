@@ -27,6 +27,12 @@ public class CustomerController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/technician/{technicianId}")
+    public ResponseEntity<List<Customer>> getCustomersForTechnician(@PathVariable Long technicianId) {
+        List<Customer> customers = customerRepository.findCustomersByTechnicianId(technicianId);
+        return ResponseEntity.ok(customers);
+    }
+
     @PostMapping
     public Customer createCustomer(@RequestBody Customer customer) {
         return customerRepository.save(customer);
@@ -55,5 +61,4 @@ public class CustomerController {
             return ResponseEntity.notFound().build();
         }
     }
-
 }

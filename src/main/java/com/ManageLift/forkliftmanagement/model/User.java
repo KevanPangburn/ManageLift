@@ -1,12 +1,11 @@
 package com.managelift.forkliftmanagement.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -28,6 +27,14 @@ public class User {
 
     @NotBlank(message = "Role is mandatory")
     private String role;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @JoinTable(
+            name = "technician_customers",
+            joinColumns = @JoinColumn(name = "technician_id"),
+            inverseJoinColumns = @JoinColumn(name = "customer_id")
+    )
+    private List<Customer> assignedCustomers = new ArrayList<>();
 
     // Getters and Setters
     public Long getId() {
@@ -68,5 +75,13 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public List<Customer> getAssignedCustomers() {
+        return assignedCustomers;
+    }
+
+    public void setAssignedCustomers(List<Customer> assignedCustomers) {
+        this.assignedCustomers = assignedCustomers;
     }
 }
