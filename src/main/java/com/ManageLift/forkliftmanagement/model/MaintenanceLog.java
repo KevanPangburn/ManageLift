@@ -24,13 +24,17 @@ public class MaintenanceLog {
     @JsonBackReference
     private Forklift forklift;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "performed_by", nullable = false)
+    private User technician;  // Maps to performed_by in DB
+
     @Column(name = "customer_name")
     private String customerName;
 
     @Column(name = "customer_po")
     private String customerPO;
 
-    @Column(name = "inspection_data")
+    @Column(name = "inspection_data", columnDefinition = "jsonb")
     @Convert(converter = MapToJsonConverter.class)
     private Map<String, String> inspectionData;
 
@@ -43,20 +47,16 @@ public class MaintenanceLog {
     private String serialNumber;
     private String hourMeter;
 
-    @ManyToOne
-    @JoinColumn(name = "performed_by")
-    private User technician;
-
     @Column(name = "performed_at")
     private LocalDateTime dateStarted;
 
     @Column(name = "date_completed")
     private LocalDateTime dateCompleted;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
-    @Column(name = "updated_at")
+    @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
     @Column(nullable = false)
