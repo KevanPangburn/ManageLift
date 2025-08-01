@@ -25,6 +25,17 @@ const CustomerDashboard = () => {
     setForklifts(prev => [...prev, newForklift]);
   };
 
+  const handleRemove = id => {
+    fetch(`/api/forklifts/${id}`, {
+      method: 'DELETE'
+    })
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to delete forklift');
+        setForklifts(prev => prev.filter(f => f.id !== id));
+      })
+      .catch(err => console.error(err));
+  };
+
   return (
     <div style={styles.container}>
       <h2>Customer Dashboard</h2>
@@ -40,6 +51,7 @@ const CustomerDashboard = () => {
                 <th>Make</th>
                 <th>Model</th>
                 <th>Serial #</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -49,6 +61,11 @@ const CustomerDashboard = () => {
                   <td>{f.make}</td>
                   <td>{f.model}</td>
                   <td>{f.serialNumber}</td>
+                  <td>
+                    <button style={styles.removeButton} onClick={() => handleRemove(f.id)}>
+                      Remove
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -89,6 +106,14 @@ const styles = {
     borderRadius: '4px',
     cursor: 'pointer',
   },
+  removeButton: {
+    padding: '6px 12px',
+    backgroundColor: '#dc3545',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+  }
 };
 
 export default CustomerDashboard;

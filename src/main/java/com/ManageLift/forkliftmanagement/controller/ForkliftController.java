@@ -27,6 +27,16 @@ public class ForkliftController {
         return forkliftRepository.save(forklift);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteForklift(@PathVariable Long id) {
+        if (forkliftRepository.existsById(id)) {
+            forkliftRepository.deleteById(id);
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @GetMapping("/{unitNumber}")
     public ResponseEntity<?> getForkliftWithCustomer(@PathVariable String unitNumber) {
         Optional<Forklift> forkliftOpt = forkliftRepository.findByUnitId(unitNumber);
