@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AddForkliftForm from './AddForkliftForm';
+import TechnicianManager from './TechnicianManager';
 
 const CustomerDashboard = () => {
   const navigate = useNavigate();
   const [forklifts, setForklifts] = useState([]);
   const [logsByForklift, setLogsByForklift] = useState({});
   const [visibleLogs, setVisibleLogs] = useState({});
-  const customerId = 2;
+  const customerId = parseInt(localStorage.getItem('userId'));
 
   useEffect(() => {
     fetch(`/api/forklifts/customer/${customerId}`)
@@ -20,6 +21,7 @@ const CustomerDashboard = () => {
   }, [customerId]);
 
   const handleLogout = () => {
+    localStorage.clear();
     navigate('/');
   };
 
@@ -110,6 +112,11 @@ const CustomerDashboard = () => {
       </div>
 
       <AddForkliftForm customerId={customerId} onForkliftAdded={handleForkliftAdded} />
+
+      <div style={{ marginTop: '40px' }}>
+        <h3>Manage Technicians</h3>
+        <TechnicianManager customerId={customerId} />
+      </div>
 
       <button style={styles.button} onClick={handleLogout}>Logout</button>
     </div>

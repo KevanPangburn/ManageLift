@@ -36,7 +36,7 @@ const handleSubmit = async (e) => {
   e.preventDefault();
   const form = e.target;
 
-  const inspectionData = {}; // <-- moved here
+  const inspectionData = {};
 
   // Collect selected radio buttons
   const radios = form.querySelectorAll('input[type="radio"]:checked');
@@ -60,9 +60,9 @@ const handleSubmit = async (e) => {
     description: 'Maintenance form submitted via frontend.',
     technicianComments: form.technician_comments.value,
     technicianSignature: form.technician_signature.value,
-    inspectionData: inspectionData, // <-- corrected name
+    inspectionData: inspectionData,
     forkliftId: forkliftData.id,
-    technicianId: 1 // temporary until you implement auth
+    technicianId: parseInt(localStorage.getItem('userId'))
   };
 
 
