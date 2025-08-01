@@ -5,7 +5,9 @@ import AddForkliftForm from './AddForkliftForm';
 const CustomerDashboard = () => {
   const navigate = useNavigate();
   const [forklifts, setForklifts] = useState([]);
-  const customerId = 2; // replace with actual ID from login/session later
+  const [logsByForklift, setLogsByForklift] = useState({});
+  const [visibleLogs, setVisibleLogs] = useState({});
+  const customerId = 2;
 
   useEffect(() => {
     fetch(`/api/forklifts/customer/${customerId}`)
@@ -26,14 +28,26 @@ const CustomerDashboard = () => {
   };
 
   const handleRemove = id => {
-    fetch(`/api/forklifts/${id}`, {
-      method: 'DELETE'
-    })
+    fetch(`/api/forklifts/${id}`, { method: 'DELETE' })
       .then(res => {
         if (!res.ok) throw new Error('Failed to delete forklift');
         setForklifts(prev => prev.filter(f => f.id !== id));
       })
       .catch(err => console.error(err));
+  };
+
+  const toggleLogs = forkliftId => {
+    const isVisible = visibleLogs[forkliftId];
+    setVisibleLogs(prev => ({ ...prev, [forkliftId]: !isVisible }));
+
+    if (!logsByForklift[forkliftId]) {
+      fetch(`/api/maintenance/forklift/${forkliftId}`)
+        .then(res => res.json())
+        .then(data => {
+          setLogsByForklift(prev => ({ ...prev, [forkliftId]: data }));
+        })
+        .catch(err => console.error('Failed to fetch logs:', err));
+    }
   };
 
   return (
@@ -56,17 +70,37 @@ const CustomerDashboard = () => {
             </thead>
             <tbody>
               {forklifts.map(f => (
-                <tr key={f.id}>
-                  <td>{f.unitId}</td>
-                  <td>{f.make}</td>
-                  <td>{f.model}</td>
-                  <td>{f.serialNumber}</td>
-                  <td>
-                    <button style={styles.removeButton} onClick={() => handleRemove(f.id)}>
-                      Remove
-                    </button>
-                  </td>
-                </tr>
+                <React.Fragment key={f.id}>
+                  <tr>
+                    <td>{f.unitId}</td>
+                    <td>{f.make}</td>
+                    <td>{f.model}</td>
+                    <td>{f.serialNumber}</td>
+                    <td>
+                      <button style={styles.removeButton} onClick={() => handleRemove(f.id)}>Remove</button>{' '}
+                      <button style={styles.viewButton} onClick={() => toggleLogs(f.id)}>
+                        {visibleLogs[f.id] ? 'Hide Logs' : 'View Logs'}
+                      </button>
+                    </td>
+                  </tr>
+                  {visibleLogs[f.id] && logsByForklift[f.id] && (
+                    <tr>
+                      <td colSpan="5">
+                        <ul>
+                          {logsByForklift[f.id].length === 0 ? (
+                            <li>No logs found.</li>
+                          ) : (
+                            logsByForklift[f.id].map(log => (
+                              <li key={log.id}>
+                                {log.description} ({new Date(log.createdAt).toLocaleString()})
+                              </li>
+                            ))
+                          )}
+                        </ul>
+                      </td>
+                    </tr>
+                  )}
+                </React.Fragment>
               ))}
             </tbody>
           </table>
@@ -108,7 +142,16 @@ const styles = {
   },
   removeButton: {
     padding: '6px 12px',
+    marginRight: '6px',
     backgroundColor: '#dc3545',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+  },
+  viewButton: {
+    padding: '6px 12px',
+    backgroundColor: '#17a2b8',
     color: '#fff',
     border: 'none',
     borderRadius: '4px',
