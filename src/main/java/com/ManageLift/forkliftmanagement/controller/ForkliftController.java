@@ -49,7 +49,12 @@ public class ForkliftController {
                 f.getCustomer().getState()
         );
 
-
         return ResponseEntity.ok(dto);
+    }
+
+    @GetMapping("/customer/{customerId}")
+    public ResponseEntity<List<Forklift>> getForkliftsByCustomerId(@PathVariable Long customerId) {
+        List<Forklift> forklifts = forkliftRepository.findByCustomerId(customerId);
+        return ResponseEntity.ok(forklifts);
     }
 }
