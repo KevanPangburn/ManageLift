@@ -27,6 +27,16 @@ public class ForkliftController {
         return forkliftRepository.save(forklift);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteForklift(@PathVariable Long id) {
+        if (forkliftRepository.existsById(id)) {
+            forkliftRepository.deleteById(id);
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @GetMapping("/{unitNumber}")
     public ResponseEntity<?> getForkliftWithCustomer(@PathVariable String unitNumber) {
         Optional<Forklift> forkliftOpt = forkliftRepository.findByUnitId(unitNumber);
@@ -49,7 +59,12 @@ public class ForkliftController {
                 f.getCustomer().getState()
         );
 
-
         return ResponseEntity.ok(dto);
+    }
+
+    @GetMapping("/customer/{customerId}")
+    public ResponseEntity<List<Forklift>> getForkliftsByCustomerId(@PathVariable Long customerId) {
+        List<Forklift> forklifts = forkliftRepository.findByCustomerId(customerId);
+        return ResponseEntity.ok(forklifts);
     }
 }

@@ -80,6 +80,12 @@ public class MaintenanceLogController {
         return maintenanceLogRepository.findAll();
     }
 
+    @GetMapping("/forklift/{forkliftId}")
+    public ResponseEntity<List<MaintenanceLog>> getLogsForForklift(@PathVariable Long forkliftId) {
+        List<MaintenanceLog> logs = maintenanceLogRepository.findByForkliftId(forkliftId);
+        return ResponseEntity.ok(logs);
+    }
+
     private LocalDateTime parseDateOrNull(String dateStr) {
         try {
             return LocalDate.parse(dateStr).atStartOfDay();
