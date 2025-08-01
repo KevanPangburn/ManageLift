@@ -22,11 +22,15 @@ const LoginPage = () => {
       console.log('Login result:', result);
 
       const userId = result.id;
+      const userRole = result.role;
       console.log('Extracted userId:', userId);
 
-      if (response.ok && userId) {
+      if (response.ok && userId && userRole) {
+        localStorage.setItem('userId', userId);
+        localStorage.setItem('userRole', userRole);
+
         alert('✅ ' + result.message);
-        switch (result.role) {
+        switch (userRole) {
           case 'Technician':
             navigate('/select-customer', { state: { userId } });
             break;
@@ -37,7 +41,7 @@ const LoginPage = () => {
             navigate('/customer');
             break;
           default:
-            alert('Unknown role: ' + result.role);
+            alert('Unknown role: ' + userRole);
         }
       } else {
         alert('❌ ' + result.message);
