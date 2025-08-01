@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AddForkliftForm from './AddForkliftForm';
 
 const CustomerDashboard = () => {
   const navigate = useNavigate();
@@ -12,12 +13,16 @@ const CustomerDashboard = () => {
       .then(data => setForklifts(data))
       .catch(err => {
         console.error('Failed to load forklifts', err);
-        setForklifts([]); // prevent map error on fetch failure
+        setForklifts([]);
       });
   }, [customerId]);
 
   const handleLogout = () => {
     navigate('/');
+  };
+
+  const handleForkliftAdded = newForklift => {
+    setForklifts(prev => [...prev, newForklift]);
   };
 
   return (
@@ -52,6 +57,8 @@ const CustomerDashboard = () => {
           <p>No forklifts found.</p>
         )}
       </div>
+
+      <AddForkliftForm customerId={customerId} onForkliftAdded={handleForkliftAdded} />
 
       <button style={styles.button} onClick={handleLogout}>Logout</button>
     </div>
