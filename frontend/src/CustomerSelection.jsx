@@ -9,7 +9,7 @@ const CustomerSelection = () => {
   const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
-    console.log('CustomerSelection mounted, userId =', userId); // DEBUG
+    console.log('CustomerSelection mounted, userId =', userId);
 
     if (!userId) {
       console.warn('No userId found in location.state');
@@ -22,7 +22,7 @@ const CustomerSelection = () => {
         return res.json();
       })
       .then((data) => {
-        console.log('Fetched customers:', data); // DEBUG
+        console.log('Fetched customers:', data);
         setCustomers(data);
       })
       .catch((err) => console.error('Failed to load customers', err));

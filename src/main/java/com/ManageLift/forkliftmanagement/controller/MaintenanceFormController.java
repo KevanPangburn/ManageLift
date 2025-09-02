@@ -34,7 +34,6 @@ public class MaintenanceFormController {
 
         Optional<Forklift> forkliftOpt;
 
-        // Prefer forkliftId if available, fallback to unitId
         if (formData.getForkliftId() != null) {
             forkliftOpt = forkliftRepository.findById(formData.getForkliftId());
         } else {
@@ -61,7 +60,6 @@ public class MaintenanceFormController {
         log.setHourMeter(formData.getHourMeter());
         log.setInspectionData(formData.getInspectionData());
 
-        // Basic info
         log.setCustomerName(formData.getCustomerName());
         log.setCustomerPO(formData.getCustomerPO());
         log.setAddress(formData.getAddress());

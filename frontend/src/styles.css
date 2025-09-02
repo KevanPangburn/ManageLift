@@ -101,7 +101,6 @@ input[type="date"] {
   margin: 0 auto;
 }
 
-
 .motor-battery-section {
   display: flex;
   flex-wrap: wrap;
@@ -168,8 +167,8 @@ input[type="date"] {
   .section {
     page-break-inside: avoid;
   }
-
 }
+
 .section.lubrication-section {
   margin: 0 auto;
   text-align: left;
@@ -178,7 +177,7 @@ input[type="date"] {
 
 .lubrication-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* ✅ responsive columns */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 30px;
   width: 100%;
   max-width: 960px;
@@ -206,4 +205,13 @@ input[type="date"] {
   text-align: center;
 }
 
+.forklift-form input,
+.forklift-form select,
+.forklift-form button {
+  width: auto;
+}
+
+.forklift-form input {
+  max-width: 240px;
+}
 

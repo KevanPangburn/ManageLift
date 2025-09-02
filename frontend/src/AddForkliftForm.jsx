@@ -40,13 +40,44 @@ const AddForkliftForm = ({ customerId, onForkliftAdded }) => {
 
   return (
     <form onSubmit={handleSubmit} style={styles.form}>
-      <h4>Add Forklift</h4>
-      <input name="unitId" placeholder="Unit ID" value={formData.unitId} onChange={handleChange} required />
-      <input name="make" placeholder="Make" value={formData.make} onChange={handleChange} />
-      <input name="model" placeholder="Model" value={formData.model} onChange={handleChange} />
-      <input name="serialNumber" placeholder="Serial Number" value={formData.serialNumber} onChange={handleChange} />
-      <input name="hourMeter" placeholder="Hour Meter" value={formData.hourMeter} onChange={handleChange} />
-      <button type="submit">Add Forklift</button>
+      <h4 style={{ textAlign: 'center', margin: 0 }}>Add Forklift</h4>
+      <input
+        name="unitId"
+        placeholder="Unit ID"
+        value={formData.unitId}
+        onChange={handleChange}
+        required
+        style={styles.input}
+      />
+      <input
+        name="make"
+        placeholder="Make"
+        value={formData.make}
+        onChange={handleChange}
+        style={styles.input}
+      />
+      <input
+        name="model"
+        placeholder="Model"
+        value={formData.model}
+        onChange={handleChange}
+        style={styles.input}
+      />
+      <input
+        name="serialNumber"
+        placeholder="Serial Number"
+        value={formData.serialNumber}
+        onChange={handleChange}
+        style={styles.input}
+      />
+      <input
+        name="hourMeter"
+        placeholder="Hour Meter"
+        value={formData.hourMeter}
+        onChange={handleChange}
+        style={styles.input}
+      />
+      <button type="submit" style={styles.submit}>Add Forklift</button>
     </form>
   );
 };
@@ -55,8 +86,17 @@ const styles = {
   form: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '0.5rem',
-    marginTop: '1rem'
+    alignItems: 'center',
+    gap: '8px',
+    marginTop: '16px'
+  },
+  input: {
+    width: '240px'
+  },
+  submit: {
+    width: '240px',
+    padding: '6px 10px',
+    cursor: 'pointer'
   }
 };
 

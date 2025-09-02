@@ -10,17 +10,20 @@ import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
+
     List<User> findByEmailAndPassword(String email, String password);
 
+    // Technicians are now linked via technicians.user_id -> users.id,
+    // and technician_customers.technician_id -> technicians.id
     @Query(value = """
-    SELECT u.*
-    FROM users u
-    JOIN technician_customers tc ON u.id = tc.technician_id
-    WHERE tc.customer_id = :customerId
-    AND u.role = 'Technician'
-""", nativeQuery = true)
+        SELECT u.*
+        FROM users u
+        JOIN technicians t
+          ON t.user_id = u.id
+        JOIN technician_customers tc
+          ON tc.technician_id = t.id
+        WHERE tc.customer_id = :customerId
+        """,
+            nativeQuery = true)
     List<User> findTechniciansByCustomerId(@Param("customerId") Long customerId);
-
-
-
 }
