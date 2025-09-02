@@ -8,22 +8,16 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const response = await fetch('/api/users/login', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       });
 
       const result = await response.json();
-      console.log('Login result:', result);
-
       const userId = result.id;
       const userRole = result.role;
-      console.log('Extracted userId:', userId);
 
       if (response.ok && userId && userRole) {
         localStorage.setItem('userId', userId);
@@ -72,8 +66,15 @@ const LoginPage = () => {
           style={styles.input}
           required
         />
-        <button type="submit" style={styles.button}>
-          Login
+        <button type="submit" style={styles.button}>Login</button>
+
+        {/* Sign up button */}
+        <button
+          type="button"
+          onClick={() => navigate('/signup')}
+          style={{ ...styles.button, backgroundColor: '#6c757d', marginTop: 8 }}
+        >
+          Sign up
         </button>
       </form>
     </div>
@@ -91,10 +92,7 @@ const styles = {
     boxShadow: '0 0 10px rgba(0,0,0,0.1)',
     textAlign: 'center',
   },
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
+  form: { display: 'flex', flexDirection: 'column' },
   input: {
     width: '100%',
     padding: '10px',

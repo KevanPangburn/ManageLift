@@ -6,13 +6,17 @@ import OperatorDashboard from './OperatorDashboard';
 import CustomerDashboard from './CustomerDashboard';
 import MaintenanceForm from './MaintenanceForm';
 import CustomerSelection from './CustomerSelection';
+import SignupPage from './SignupPage';
+import TechnicianSignup from './TechnicianSignup';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<LoginPage />} />
-        <Route path="/select-customer" element={<CustomerSelection />} /> {/* New route */}
+        <Route path="/signup" element={<SignupPage />} />                     {}
+        <Route path="/signup/technician" element={<TechnicianSignup />} />    {}
+        <Route path="/select-customer" element={<CustomerSelection />} />
         <Route path="/dashboard" element={<TechnicianDashboard />} />
         <Route path="/operator" element={<OperatorDashboard />} />
         <Route path="/customer" element={<CustomerDashboard />} />
