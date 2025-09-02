@@ -24,5 +24,4 @@ public class TechnicianCustomer {
         this.customerId = customerId;
     }
 
-    // Getters & Setters
 }

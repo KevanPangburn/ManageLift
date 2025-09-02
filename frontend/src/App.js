@@ -5,7 +5,7 @@ import TechnicianDashboard from './TechnicianDashboard';
 import OperatorDashboard from './OperatorDashboard';
 import CustomerDashboard from './CustomerDashboard';
 import MaintenanceForm from './MaintenanceForm';
-import CustomerSelection from './CustomerSelection'; // Added import
+import CustomerSelection from './CustomerSelection';
 
 function App() {
   return (

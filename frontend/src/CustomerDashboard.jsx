@@ -115,7 +115,10 @@ const CustomerDashboard = () => {
 
       <div style={{ marginTop: '40px' }}>
         <h3>Manage Technicians</h3>
-        <TechnicianManager customerId={customerId} />
+        {/* Center the technician section without changing its internals */}
+        <div style={styles.centerWrap}>
+          <TechnicianManager customerId={customerId} />
+        </div>
       </div>
 
       <button style={styles.button} onClick={handleLogout}>Logout</button>
@@ -136,6 +139,10 @@ const styles = {
   table: {
     borderCollapse: 'collapse',
     width: '100%',
+  },
+  centerWrap: {
+    display: 'inline-block',
+    textAlign: 'left',
   },
   button: {
     marginTop: '40px',

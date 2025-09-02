@@ -2,35 +2,45 @@ import React, { useEffect, useState } from 'react';
 
 const TechnicianManager = ({ customerId }) => {
   const [technicians, setTechnicians] = useState([]);
-  const [newTechId, setNewTechId] = useState('');
+  const [techPicklist, setTechPicklist] = useState([]);
+  const [selectedTechId, setSelectedTechId] = useState('');
 
   useEffect(() => {
     fetch(`/api/customers/${customerId}/technicians`)
       .then(res => res.json())
-      .then(data => setTechnicians(data))
+      .then(setTechnicians)
       .catch(err => console.error('Failed to load technicians:', err));
   }, [customerId]);
 
-  const handleRemove = (techId) => {
-    fetch(`/api/customers/${customerId}/technicians/${techId}`, {
-      method: 'DELETE',
-    })
-      .then(() => {
-        setTechnicians(prev => prev.filter(t => t.id !== techId));
-      })
+  useEffect(() => {
+    fetch(`/api/technicians/picklist`)
+      .then(res => res.json())
+      .then(setTechPicklist)
+      .catch(err => console.error('Failed to load tech picklist:', err));
+  }, []);
+
+  const userIdToTechnicianId = (userId) => {
+    const match = techPicklist.find(p => p.userId === userId);
+    return match ? match.technicianId : null;
+  };
+
+  const handleRemove = (userId) => {
+    const techId = userIdToTechnicianId(userId);
+    if (!techId) {
+      alert('Unable to resolve technician id for this user.');
+      return;
+    }
+    fetch(`/api/customers/${customerId}/technicians/${techId}`, { method: 'DELETE' })
+      .then(() => setTechnicians(prev => prev.filter(t => t.id !== userId)))
       .catch(err => console.error('Failed to remove tech:', err));
   };
 
   const handleAdd = () => {
-    const parsedId = parseInt(newTechId, 10);
-    if (isNaN(parsedId)) {
-      alert('Please enter a valid technician ID.');
+    if (!selectedTechId) {
+      alert('Select a technician to add.');
       return;
     }
-
-    fetch(`/api/customers/${customerId}/technicians/${parsedId}`, {
-      method: 'POST',
-    })
+    fetch(`/api/customers/${customerId}/technicians/${selectedTechId}`, { method: 'POST' })
       .then(response => {
         if (!response.ok) throw new Error(`Server error: ${response.status}`);
         return fetch(`/api/customers/${customerId}/technicians`);
@@ -38,17 +48,21 @@ const TechnicianManager = ({ customerId }) => {
       .then(res => res.json())
       .then(data => {
         setTechnicians(data);
-        setNewTechId('');
+        setSelectedTechId('');
       })
       .catch(err => {
         console.error('Failed to add tech:', err);
-        alert('Failed to add technician. Check the ID and try again.');
+        alert('Failed to add technician. Check the selection and try again.');
       });
   };
+
+  const assignedUserIds = new Set(technicians.map(t => t.id));
+  const availableOptions = techPicklist.filter(p => !assignedUserIds.has(p.userId));
 
   return (
     <div style={styles.container}>
       <h3>Assigned Technicians</h3>
+
       {technicians.length === 0 ? (
         <p>No technicians assigned.</p>
       ) : (
@@ -61,14 +75,21 @@ const TechnicianManager = ({ customerId }) => {
           ))}
         </ul>
       )}
+
       <div style={styles.addContainer}>
-        <input
-          type="text"
-          placeholder="Tech ID to add"
-          value={newTechId}
-          onChange={e => setNewTechId(e.target.value)}
-        />
-        <button onClick={handleAdd}>Add Technician</button>
+        <select
+          value={selectedTechId}
+          onChange={e => setSelectedTechId(e.target.value)}
+          style={styles.select}
+        >
+          <option value="">Select technician…</option>
+          {availableOptions.map(p => (
+            <option key={p.technicianId} value={p.technicianId}>
+              {p.name} — {p.email}
+            </option>
+          ))}
+        </select>
+        <button style={styles.addBtn} onClick={handleAdd}>Add Technician</button>
       </div>
     </div>
   );
@@ -77,7 +98,7 @@ const TechnicianManager = ({ customerId }) => {
 const styles = {
   container: {
     marginTop: '30px',
-    textAlign: 'left',
+    textAlign: 'left',   // keep inner content left-aligned
   },
   removeBtn: {
     marginLeft: '10px',
@@ -92,6 +113,13 @@ const styles = {
     display: 'flex',
     gap: '10px',
     alignItems: 'center',
+  },
+  select: {
+    width: 'auto',
+    minWidth: '220px',
+  },
+  addBtn: {
+    padding: '4px 8px',
   },
 };
 
