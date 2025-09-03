@@ -13,12 +13,6 @@ const SignupPage = () => {
     cursor: 'pointer',
     background: '#fff',
   };
-  const disabledCard = {
-    ...card,
-    opacity: 0.5,
-    cursor: 'not-allowed',
-    pointerEvents: 'none',
-  };
 
   return (
     <div
@@ -33,7 +27,7 @@ const SignupPage = () => {
     >
       <h2>Create an account</h2>
       <p style={{ marginTop: 8, color: '#666' }}>
-        Technician and Operator sign-up are enabled right now.
+        Technician, Operator, and Customer User sign-up are enabled right now.
       </p>
 
       <div
@@ -45,7 +39,7 @@ const SignupPage = () => {
           justifyContent: 'center',
         }}
       >
-        {/* Technician */}
+        {}
         <div
           style={card}
           onClick={() => navigate('/signup/technician')}
@@ -59,7 +53,7 @@ const SignupPage = () => {
           <p>Set up a technician login</p>
         </div>
 
-        {/* Operator (enabled) */}
+        {}
         <div
           style={card}
           onClick={() => navigate('/signup/operator')}
@@ -73,10 +67,18 @@ const SignupPage = () => {
           <p>Set up an operator login</p>
         </div>
 
-        {/* Customer User (disabled / coming soon) */}
-        <div style={disabledCard} aria-disabled="true">
+        {}
+        <div
+          style={card}
+          onClick={() => navigate('/signup/customer')}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) =>
+            (e.key === 'Enter' || e.key === ' ') && navigate('/signup/customer')
+          }
+        >
           <h3>New Customer User</h3>
-          <p>(Coming soon)</p>
+          <p>Create a login for your company</p>
         </div>
       </div>
 
